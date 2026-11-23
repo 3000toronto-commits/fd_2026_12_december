@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Календарь задач финансовой службы — декабрь 2026
+  </title>
+  <style>
+:root {
+  --blue: #2e62a2;
+  --pale: #e2ecf5;
+  --orange: #F5811F;
+  --sage: #A9B7A3;
+  --milk: #F7F6F1;
+  --ink: #2A2F33;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,body {
+  margin: 0;
+  width: 100%;
+  font-family: Arial,"DejaVu Sans",sans-serif;
+  color: var(--ink);
+  background: var(--milk);
+}
+
+.frame {
+  width: 757px;
+  max-width: 100%;
+  height: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #d5e0e7;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  flex: none;
+  background: var(--milk);
+  padding: 17px 19px 12px;
+  border-bottom: 1px solid #e1e8ec;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.titlebar {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.titlebar h1 {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  margin: 0;
+  font-weight: 760;
+}
+
+.year {
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 800;
+  background: #fff;
+  padding: 6px 9px;
+  border-radius: 7px;
+}
+
+.tabs {
+  display: flex;
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.tab {
+  border: 1px solid #d4dfeb;
+  background: #fff;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 13px;
+  border-radius: 7px;
+  white-space: nowrap;
+  cursor: pointer;
+  flex: 1;
+}
+
+.tab[aria-selected=true] {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.tab:focus-visible,.action:focus-visible,input:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-top: 11px;
+  font-size: 11px;
+  color: #5b6870;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.progressbar {
+  width: 86px;
+  height: 7px;
+  background: #dbe6df;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressfill {
+  width: 0;
+  height: 100%;
+  background: #7e9a76;
+  transition: width .2s;
+}
+
+.scroll-region {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+  scrollbar-color: #b9c7d1 transparent;
+}
+
+.tablewrap {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+col.task {
+  width: auto;
+}
+
+col.priority {
+  width: 65px;
+}
+
+col.period {
+  width: 70px;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--pale);
+  box-shadow: 0 1px 0 #c7d8e6;
+}
+
+th {
+  font-size: 11px;
+  color: #204e82;
+  padding: 12px 6px;
+  text-align: center;
+  line-height: 1.25;
+  font-weight: 750;
+}
+
+th:first-child {
+  text-align: left;
+  padding-left: 18px;
+}
+
+th:last-child {
+  padding-right: 10px;
+}
+
+td {
+  padding: 11px 5px;
+  border-bottom: 1px solid #e9edf1;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+}
+
+td:first-child {
+  padding-left: 18px;
+  padding-right: 10px;
+}
+
+td:last-child {
+  padding-right: 10px;
+}
+
+tbody tr:nth-child(even) {
+  background: #fbfcfd;
+}
+
+tbody tr:hover {
+  background: #f1f6fa;
+}
+
+.priority-cell {
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.p1 {
+  color: #b65609;
+}
+
+.p2 {
+  color: var(--blue);
+}
+
+.p3 {
+  color: #72787c;
+}
+
+.checkcell {
+  text-align: center;
+}
+
+.check {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  vertical-align: middle;
+  width: 19px;
+  height: 19px;
+  background: #fff;
+  border: 1.5px solid #a6b4bf;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.check:checked {
+  background: #e1ece0;
+  border-color: #839c7e;
+}
+
+.check:checked:after {
+  content: "✓";
+  font-family: Arial,sans-serif;
+  color: #2b663c;
+  position: absolute;
+  left: 2px;
+  top: -6px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.dash {
+  color: #ced6da;
+  font-size: 15px;
+}
+
+.footer {
+  flex: none;
+  padding: 11px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #e2e9ed;
+  background: var(--milk);
+}
+
+.footer .hint {
+  color: #697b85;
+  font-size: 10px;
+  line-height: 1.3;
+  max-width: 320px;
+}
+
+.actions {
+  display: flex;
+  gap: 7px;
+}
+
+.action {
+  font: 700 11px Arial,sans-serif;
+  border-radius: 7px;
+  padding: 10px 11px;
+  border: 1px solid #b8cbd8;
+  background: #fff;
+  color: var(--blue);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.action.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.action:hover {
+  filter: brightness(.97);
+}
+
+.printhead {
+  display: none;
+}
+
+.warn {
+  display: none;
+}
+
+@media (max-width:590px) {
+  header {
+    padding: 12px 10px 9px;
+  }
+
+  .titlebar h1 {
+    font-size: 16px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+  }
+
+  .tabs {
+    gap: 4px;
+  }
+
+  .tab {
+    font-size: 10px;
+    padding: 8px 4px;
+  }
+
+  .meta {
+    font-size: 10px;
+  }
+
+  th {
+    font-size: 9px;
+    padding: 10px 2px;
+  }
+
+  th:first-child {
+    padding-left: 9px;
+  }
+
+  td {
+    font-size: 10px;
+    padding: 9px 2px;
+  }
+
+  td:first-child {
+    padding-left: 9px;
+    padding-right: 3px;
+  }
+
+  td:last-child {
+    padding-right: 5px;
+  }
+
+  col.priority {
+    width: 44px;
+  }
+
+  col.period {
+    width: 52px;
+  }
+
+  .check {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer {
+    padding: 8px 9px;
+  }
+
+  .footer .hint {
+    display: none;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .action {
+    font-size: 11px;
+  }
+
+  .progressbar {
+    width: 55px;
+  }
+
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  html,body {
+    background: #fff !important;
+    overflow: visible !important;
+    width: auto !important;
+    height: auto !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    padding: 12mm !important;
+    box-sizing: border-box !important;
+  }
+
+  .frame {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    display: block !important;
+    border: 0 !important;
+    overflow: visible !important;
+  }
+
+  .eyebrow,.tabs,.year,.meta,.footer {
+    display: none !important;
+  }
+
+  header {
+    padding: 0 0 12px !important;
+    border: 0 !important;
+    background: #fff !important;
+  }
+
+  .titlebar h1 {
+    font-size: 19pt !important;
+  }
+
+  .printhead {
+    display: block !important;
+    font-size: 10pt;
+    color: var(--blue);
+    padding: 1px 0 10px;
+  }
+
+  .scroll-region {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .tablewrap {
+    overflow: visible !important;
+  }
+
+  table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    font-size: 9pt;
+  }
+
+  col.priority {
+    width: 18mm;
+  }
+
+  col.period {
+    width: 23mm;
+  }
+
+  thead {
+    display: table-header-group !important;
+    position: static !important;
+    box-shadow: none !important;
+  }
+
+  tbody tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  th {
+    font-size: 9pt;
+    padding: 8px;
+  }
+
+  td {
+    font-size: 9pt;
+    padding: 9px 6px;
+  }
+
+  td:first-child,th:first-child {
+    padding-left: 10px;
+  }
+
+  .check {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .check:checked:after {
+    content: "✓";
+  }
+
+  .print-progress {
+    display: none !important;
+  }
+
+  .warn {
+    display: block;
+    font-size: 8pt;
+    color: #6b767e;
+    margin-top: 10px;
+  }
+
+}
+</style>
+ </head>
+ <body>
+  <main aria-label="Календарь задач" class="frame">
+   <header>
+    <div class="eyebrow">
+     Практический инструмент · финансовая служба
+    </div>
+    <div class="titlebar">
+     <h1>
+      Календарь задач на декабрь
+     </h1>
+     <span class="year">
+      2026
+     </span>
+    </div>
+    <nav aria-label="Выберите подразделение" class="tabs" role="tablist">
+     <button aria-selected="true" class="tab" data-dept="buh" role="tab">
+      Бухгалтерия
+     </button>
+     <button aria-selected="false" class="tab" data-dept="kaz" role="tab">
+      Казначейство
+     </button>
+     <button aria-selected="false" class="tab" data-dept="peo" role="tab">
+      ПЭО
+     </button>
+    </nav>
+    <div class="meta">
+     <span id="dept-label">
+      Бухгалтерия · задачи на месяц
+     </span>
+     <div class="progress">
+      <span id="progress-label">
+       0 из 0
+      </span>
+      <div aria-hidden="true" class="progressbar">
+       <div class="progressfill" id="progress-fill">
+       </div>
+      </div>
+     </div>
+    </div>
+   </header>
+   <div class="scroll-region" id="scroll">
+    <div class="tablewrap">
+     <div class="printhead" id="printhead">
+      Бухгалтерия · декабрь 2026 года
+     </div>
+     <div class="print-progress" id="print-progress" style="display:none">
+     </div>
+     <table id="task-table">
+      <colgroup>
+       <col class="task"/>
+       <col class="priority"/>
+       <col class="period"/>
+       <col class="period"/>
+       <col class="period"/>
+      </colgroup>
+      <thead>
+       <tr>
+        <th scope="col">
+         Задача
+        </th>
+        <th scope="col">
+         Приоритет
+         <br/>
+         1–3
+        </th>
+        <th scope="col">
+         1–10
+         <br/>
+         декабря
+        </th>
+        <th scope="col">
+         11–20
+         <br/>
+         декабря
+        </th>
+        <th scope="col">
+         21–31
+         <br/>
+         декабря
+        </th>
+       </tr>
+      </thead>
+      <tbody id="tasks">
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <footer class="footer">
+    <div class="hint">
+     Отметки сохраняются в этом браузере. В PDF попадет весь выбранный план.
+    </div>
+    <div class="actions">
+     <button class="action" id="reset">
+      Сбросить отметки
+     </button>
+     <button class="action primary" id="export">
+      ↓ Сохранить в PDF
+     </button>
+    </div>
+   </footer>
+  </main>
+  <script>
+'use strict';
+const DATA={
+  "buh": [
+    {
+      "id": "buh-1",
+      "text": "Обеспечить поступление и проведение документов от поставщиков за декабрь в течение пяти дней с даты операции или выставления документов",
+      "p": 2,
+      "slots": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "buh-2",
+      "text": "Оформить акты ввода в эксплуатацию основных средств и нематериальных активов в 2026 году",
+      "p": 2,
+      "slots": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "buh-3",
+      "text": "Оформить акты списания товарно-материальных ценностей и накладные на отпуск материалов в производство",
+      "p": 2,
+      "slots": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "buh-4",
+      "text": "Подготовить приказ о подекадной передаче документов в бухгалтерию на декабрь 2026 года и январь 2027 года; основной объем документов запросить до конца декабря, кроме коммунальных расходов",
+      "p": 1,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "buh-5",
+      "text": "Провести предварительное закрытие года по итогам 11 месяцев: отразить в бухгалтерской программе приходные и расходные документы",
+      "p": 1,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "buh-6",
+      "text": "Проверить наличие первичных документов за 11 месяцев по всем контрагентам",
+      "p": 2,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "buh-7",
+      "text": "Составить реестр отсутствующих первичных документов за 11 месяцев с указанием ответственных",
+      "p": 2,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "buh-8",
+      "text": "Проверить письма и требования ИФНС и ответить на них, чтобы снизить риск блокировки счетов после праздников",
+      "p": 1,
+      "slots": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "buh-9",
+      "text": "Провести инвентаризацию просроченной дебиторской задолженности",
+      "p": 2,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "buh-10",
+      "text": "Получить от планово-экономического отдела прогноз выручки и затрат до конца года",
+      "p": 2,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "buh-11",
+      "text": "Подготовиться к декларации по НДС: проверить книги покупок и продаж за 11 месяцев, предварительно рассчитать налог, передать казначейству рекомендации по авансам поставщикам",
+      "p": 2,
+      "slots": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "buh-12",
+      "text": "Сверить учетные данные со сведениями, передаваемыми через онлайн-кассы и государственные информационные системы",
+      "p": 1,
+      "slots": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "buh-13",
+      "text": "Рассчитать отпускные сотрудникам, которые продлят новогодние каникулы отпуском",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "buh-14",
+      "text": "Рассчитать резервы отпусков для отчетности за 2026 год",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "buh-15",
+      "text": "Оформить приказами бухгалтерскую и налоговую учетные политики на 2027 год; при необходимости зарезервировать номера приказов",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "buh-16",
+      "text": "Рассчитать проценты по полученным и выданным займам, кроме кредитов",
+      "p": 3,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "buh-17",
+      "text": "Подготовить письма поставщикам с просьбой прислать акты сверки за 2026 год",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "buh-18",
+      "text": "Составить график сдачи отчетности за 2026 год и работы бухгалтерии в январе 2027 года",
+      "p": 3,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "buh-19",
+      "text": "При добровольном переходе компании или организаций группы на другую систему налогообложения с 2027 года направить заявление в ИФНС",
+      "p": 1,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "buh-20",
+      "text": "Подписать акты на услуги производственного характера и ремонтные работы",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    }
+  ],
+  "kaz": [
+    {
+      "id": "kaz-1",
+      "text": "Проверить сроки действия подписей руководителей подразделений, подготовить отчет",
+      "p": 1,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "kaz-2",
+      "text": "Запросить у менеджеров план критичных платежей декабря, от которых зависит бесперебойная работа в январе",
+      "p": 1,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "kaz-3",
+      "text": "Получить от отдела продаж или напрямую от клиентов сведения о планируемых авансах",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-4",
+      "text": "Отобрать контрагентов с задолженностью выше средней, назначить ответственных менеджеров и запросить у бухгалтерии акты сверки за 11 месяцев",
+      "p": 2,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-5",
+      "text": "Продлить полномочия руководителей в банках, если право подписи истекает в январе",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-6",
+      "text": "Проверить кредитные договоры и продлить те, срок которых истекает в начале января 2027 года",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-7",
+      "text": "Согласовать поступления и списания, обновить БДДС и платежный календарь на декабрь с планом по декадам, а на последнюю декаду — по дням и очередности платежей",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-8",
+      "text": "Убедиться, что в платежный календарь на конец декабря внесены все оплаты, необходимые для работы в январе: коммунальные услуги, авансы поставщикам, сырье, связь и интернет",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-9",
+      "text": "Проверить актуальность реквизитов фондов и налоговой службы на 2027 год",
+      "p": 2,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-10",
+      "text": "Подготовить аналитический обзор банковских предложений по финансированию на 2027 год с рекомендациями",
+      "p": 3,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-11",
+      "text": "Сверить данные кассовой выручки между ККТ и учетными системами",
+      "p": 2,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "kaz-12",
+      "text": "Разработать и утвердить кредитный план на 2027 год",
+      "p": 1,
+      "slots": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "kaz-13",
+      "text": "Зарезервировать деньги для декабрьской зарплаты, связанных налогов и взносов, а также январского аванса",
+      "p": 1,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-14",
+      "text": "Составить платежный календарь на январь 2027 года, критичные платежи первых январских дней по возможности перенести на декабрь",
+      "p": 1,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-15",
+      "text": "Подготовить документы для размещения депозита на праздники, если в последний рабочий день останутся свободные средства",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-16",
+      "text": "Провести платежи, от которых зависит бесперебойная работа компании в январе",
+      "p": 1,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-17",
+      "text": "Зарезервировать деньги для экстренных нужд в первую рабочую неделю января",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-18",
+      "text": "Перевести страховой запас на неотложные расходы во время праздников с расчетного счета на корпоративную карту",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-19",
+      "text": "Уточнить график работы обслуживающих компанию банков",
+      "p": 1,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-20",
+      "text": "Подготовить график работы казначейства в январе 2027 года",
+      "p": 3,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-21",
+      "text": "Проверить, учтены ли в работе новые нормы законодательства и обязанности с 2027 года",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "kaz-22",
+      "text": "Пересмотреть договоры займов с учредителями: если прогнозная кредитная нагрузка за год превысит внутренний норматив, оценить возврат займов и оформление новых договоров в январе",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    }
+  ],
+  "peo": [
+    {
+      "id": "peo-1",
+      "text": "Получить от заказчиков или коммерческой службы сведения о подписании актов выполненных работ, оказанных услуг и товарно-транспортных документов до конца 2026 года для прогноза выручки",
+      "p": 1,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "peo-2",
+      "text": "Провести план-факт анализ за 11 месяцев",
+      "p": 2,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "peo-3",
+      "text": "Составить прогноз основных показателей по итогам года, дать рекомендации коммерческой службе, производству и отделу закупок по отклонениям; при необходимости обновить прогноз",
+      "p": 1,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "peo-4",
+      "text": "Определить и согласовать с руководством корректирующие меры для исполнения бюджетов компании",
+      "p": 1,
+      "slots": [
+        0
+      ]
+    },
+    {
+      "id": "peo-5",
+      "text": "Предоставить бухгалтерии прогноз выручки и затрат до конца года",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "peo-6",
+      "text": "Утвердить бюджеты компании на 2027 год",
+      "p": 1,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "peo-7",
+      "text": "Пересмотреть производственные нормативы и калькуляции",
+      "p": 2,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "peo-8",
+      "text": "Скорректировать бюджеты на январь 2027 года с учетом ожидаемого закрытия бюджетов 2026 года",
+      "p": 2,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "peo-9",
+      "text": "Сформировать резервы для управленческого учета",
+      "p": 2,
+      "slots": [
+        1
+      ]
+    },
+    {
+      "id": "peo-10",
+      "text": "Проверить правильность отражения приходных и расходных операций в управленческом учете за IV квартал",
+      "p": 2,
+      "slots": [
+        2
+      ]
+    },
+    {
+      "id": "peo-11",
+      "text": "Совместно с филиалами сформировать предварительный план проектов на 2027 год и внести его на утверждение до января",
+      "p": 1,
+      "slots": [
+        2
+      ]
+    }
+  ]
+};
+const NAMES={buh:'Бухгалтерия',kaz:'Казначейство',peo:'Планово-экономический отдел'};
+const STORAGE='cfo-dec-2026-checks-v1';
+let dept='buh';
+let state={};
+try{state=JSON.parse(localStorage.getItem(STORAGE)||'{}')||{}}catch(e){state={}}
+const body=document.getElementById('tasks');
+const progressLabel=document.getElementById('progress-label');
+const progressFill=document.getElementById('progress-fill');
+const current=document.getElementById('dept-label');
+const printhead=document.getElementById('printhead');
+const printProgress=document.getElementById('print-progress');
+function save(){try{localStorage.setItem(STORAGE,JSON.stringify(state))}catch(e){}}function stats(){const d=DATA[dept];
+const total=d.reduce((a,t)=>a+t.slots.length,0);
+const completed=d.reduce((a,t)=>a+t.slots.filter(s=>!!state[t.id+'-'+s]).length,0);
+progressLabel.textContent=`${completed} из ${total} отметок`;
+progressFill.style.width=(total?completed/total*100:0)+'%';
+printProgress.textContent=`Выполнено: ${completed} из ${total} отметок`;
+}function render(){document.querySelectorAll('[data-dept]').forEach(btn=>{btn.setAttribute('aria-selected',btn.dataset.dept===dept?'true':'false');
+btn.tabIndex=btn.dataset.dept===dept?0:-1});
+current.textContent=NAMES[dept]+' · задачи на месяц';
+printhead.textContent=NAMES[dept]+' · декабрь 2026 года';
+body.replaceChildren();
+DATA[dept].forEach((task,index)=>{const tr=document.createElement('tr');
+const title=document.createElement('td');
+title.textContent=task.text;
+tr.appendChild(title);
+const p=document.createElement('td');
+p.className='priority-cell p'+task.p;
+p.textContent=task.p;
+tr.appendChild(p);
+for(let s=0;
+s<3;
+s++){const cell=document.createElement('td');
+cell.className='checkcell';
+if(task.slots.includes(s)){const box=document.createElement('input');
+box.type='checkbox';
+box.className='check';
+box.checked=!!state[task.id+'-'+s];
+box.setAttribute('aria-label',task.text+', '+['1–10','11–20','21–31'][s]+' декабря');
+box.addEventListener('change',()=>{state[task.id+'-'+s]=box.checked;
+save();
+stats()});
+cell.appendChild(box)}else{const dash=document.createElement('span');
+dash.className='dash';
+dash.textContent='·';
+dash.setAttribute('aria-hidden','true');
+cell.appendChild(dash)}tr.appendChild(cell)}body.appendChild(tr)});
+stats();
+document.getElementById('scroll').scrollTop=0;
+}document.querySelectorAll('[data-dept]').forEach(btn=>btn.addEventListener('click',()=>{dept=btn.dataset.dept;
+render()}));
+document.getElementById('reset').addEventListener('click',()=>{if(!confirm('Снять все отметки только в календаре «'+NAMES[dept]+'»?'))return;
+for(const t of DATA[dept])for(const s of t.slots)delete state[t.id+'-'+s];
+save();
+render()});
+document.getElementById('export').addEventListener('click',()=>{document.title='Календарь_'+NAMES[dept].replaceAll(' ','_')+'_Декабрь_2026';
+window.print()});
+window.addEventListener('afterprint',()=>{document.title='Календарь задач финансовой службы — декабрь 2026'});
+render();
+</script>
+ </body>
+</html>
